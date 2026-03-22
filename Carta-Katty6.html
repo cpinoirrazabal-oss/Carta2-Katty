@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Para Katty 🌷</title>
+
+<style>
+
+/* RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+overflow:hidden;
+font-family:'Segoe Script', cursive;
+height:100vh;
+background:black;
+}
+
+/* CIELO */
+
+.sky{
+
+position:fixed;
+width:100%;
+height:100%;
+
+background:
+linear-gradient(
+to top,
+#ff9a9e 0%,
+#fad0c4 30%,
+#ffd1ff 60%,
+#ffe29f 100%
+);
+
+transition:6s;
+overflow:hidden;
+}
+
+/* NOCHE */
+
+.sky.night{
+
+background:
+linear-gradient(
+to top,
+#020617,
+#0f172a,
+#1e293b,
+#334155
+);
+
+}
+
+/* SOL */
+
+.sun{
+
+position:absolute;
+
+bottom:25%;
+left:50%;
+
+transform:translateX(-50%);
+
+width:120px;
+height:120px;
+
+border-radius:50%;
+
+background:radial-gradient(
+circle,
+#fff7b2,
+#ffcc66
+);
+
+box-shadow:
+0 0 80px #ffd54f,
+0 0 150px #ffb300;
+
+transition:6s;
+
+}
+
+/* LUNA */
+
+.moon{
+
+position:absolute;
+top:10%;
+right:10%;
+
+width:90px;
+height:90px;
+
+border-radius:50%;
+
+background:white;
+
+box-shadow:
+0 0 40px white,
+0 0 80px #94a3b8;
+
+opacity:0;
+transition:4s;
+
+}
+
+/* CAMPO */
+
+.field{
+
+position:absolute;
+bottom:0;
+
+width:100%;
+height:35%;
+
+background:
+linear-gradient(
+to top,
+#14532d,
+#22c55e
+);
+
+overflow:hidden;
+}
+
+/* TULIPAN */
+
+.tulip{
+
+position:absolute;
+bottom:0;
+
+width:8px;
+height:45px;
+
+animation:sway 4s ease-in-out infinite;
+
+}
+
+@keyframes sway{
+
+0%{ transform:rotate(-2deg); }
+50%{ transform:rotate(2deg); }
+100%{ transform:rotate(-2deg); }
+
+}
+
+.stem{
+
+position:absolute;
+bottom:0;
+
+width:3px;
+height:35px;
+
+background:#14532d;
+
+left:2px;
+
+}
+
+.flower{
+
+position:absolute;
+top:-12px;
+
+width:14px;
+height:14px;
+
+border-radius:
+50% 50% 0 0;
+
+}
+
+/* COLORES */
+
+.pink{ background:#ff6fa3; }
+.red{ background:#ef4444; }
+.yellow{ background:#facc15; }
+
+/* PÉTALOS */
+
+.petal{
+
+position:absolute;
+
+width:10px;
+height:10px;
+
+background:#fda4af;
+
+border-radius:50%;
+
+opacity:.8;
+
+animation:fall linear infinite;
+
+}
+
+@keyframes fall{
+
+0%{
+transform:translateY(-10px);
+opacity:.8;
+}
+
+100%{
+transform:translateY(100vh);
+opacity:.2;
+}
+
+}
+
+/* TEXTO (DÍA NEGRO) */
+
+.letter{
+
+position:absolute;
+top:25%;
+
+width:100%;
+
+text-align:center;
+
+color:black;
+
+font-size:22px;
+
+text-shadow:
+0 0 12px rgba(0,0,0,.3);
+
+opacity:0;
+
+padding:20px;
+
+}
+
+/* BOTÓN */
+
+.btn{
+
+position:absolute;
+
+bottom:40%;
+left:50%;
+
+transform:translateX(-50%);
+
+padding:12px 24px;
+
+background:#fb7185;
+
+border:none;
+
+border-radius:20px;
+
+color:white;
+
+font-size:16px;
+
+cursor:pointer;
+
+opacity:0;
+
+}
+
+/* SOBRE */
+
+.envelope{
+
+position:absolute;
+
+top:50%;
+left:50%;
+
+transform:translate(-50%,-50%) scale(1);
+
+width:240px;
+height:160px;
+
+background:linear-gradient(
+145deg,
+#fff1f2,
+#ffe4e6
+);
+
+border-radius:12px;
+
+box-shadow:
+0 15px 40px rgba(0,0,0,.35),
+inset 0 0 20px rgba(255,255,255,.5);
+
+cursor:pointer;
+
+transition:.4s;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+}
+
+.envelope:hover{
+
+transform:translate(-50%,-50%) scale(1.05);
+
+}
+
+/* TAPA */
+
+.envelope::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:linear-gradient(
+145deg,
+#fecdd3,
+#fda4af
+);
+
+clip-path:polygon(
+0 0,
+100% 0,
+50% 60%
+);
+
+border-radius:12px;
+
+z-index:2;
+
+}
+
+/* CUERPO */
+
+.envelope::after{
+
+content:"";
+
+position:absolute;
+
+bottom:0;
+left:0;
+
+width:100%;
+height:70%;
+
+background:linear-gradient(
+145deg,
+#fff1f2,
+#ffe4e6
+);
+
+border-radius:0 0 12px 12px;
+
+z-index:1;
+
+}
+
+/* SELLO */
+
+.seal{
+
+position:absolute;
+
+width:44px;
+height:44px;
+
+background:#fb7185;
+
+border-radius:50%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+color:white;
+
+font-size:18px;
+
+z-index:3;
+
+box-shadow:
+0 6px 12px rgba(0,0,0,.25);
+
+transition:.5s;
+
+}
+
+/* TEXTO FINAL */
+
+.final-text{
+
+position:absolute;
+
+bottom:18%;
+
+width:100%;
+
+text-align:center;
+
+font-size:22px;
+
+color:black;
+
+opacity:0;
+
+}
+
+/* SECRETO */
+
+.secret-btn{
+
+position:absolute;
+
+top:10%;
+left:50%;
+
+transform:translateX(-50%);
+
+padding:10px 18px;
+
+background:#c084fc;
+
+border:none;
+
+border-radius:20px;
+
+color:white;
+
+opacity:0;
+
+}
+
+.secret-message{
+
+position:absolute;
+
+top:50%;
+left:50%;
+
+transform:translate(-50%,-50%);
+
+background:rgba(255,255,255,.2);
+
+padding:20px 30px;
+
+border-radius:20px;
+
+color:black;
+
+font-size:20px;
+
+opacity:0;
+
+}
+
+/* TEXTO NOCHE */
+
+.sky.night .letter{
+color:white;
+text-shadow:
+0 0 12px rgba(255,255,255,.9);
+}
+
+.sky.night .final-text{
+color:white;
+}
+
+.sky.night .secret-message{
+color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="sky" id="sky">
+
+<div class="moon" id="moon"></div>
+
+<div class="sun" id="sun"></div>
+
+<div class="letter" id="letter"></div>
+
+<button class="btn" id="nextBtn">
+Continuar 🌷
+</button>
+
+<div class="envelope" id="envelope">
+
+<div class="seal">
+💖
+</div>
+
+</div>
+
+<div class="field" id="field"></div>
+
+<div class="final-text" id="finalText">
+Para ti Katty Machela 🌷<br>
+Con todo mi cariño 💜<br><br>
+Claudio 🌷💜
+</div>
+
+<button class="secret-btn" id="secretBtn">
+Abrir mensaje secreto 💌
+</button>
+
+<div class="secret-message" id="secretMessage">
+Ojalá estas flores digitales<br>
+puedan sacarte una sonrisa 🌷💜
+</div>
+
+</div>
+
+<audio id="music" loop>
+<source src="ojos-color-sol.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+window.addEventListener("load",function(){
+
+const field=document.getElementById("field");
+const envelope=document.getElementById("envelope");
+const letter=document.getElementById("letter");
+const btn=document.getElementById("nextBtn");
+const music=document.getElementById("music");
+const sky=document.getElementById("sky");
+const moon=document.getElementById("moon");
+const sun=document.getElementById("sun");
+const finalText=document.getElementById("finalText");
+const secretBtn=document.getElementById("secretBtn");
+const secretMessage=document.getElementById("secretMessage");
+
+/* FLORES */
+
+function createTulip(x){
+
+let t=document.createElement("div");
+
+t.classList.add("tulip");
+
+let stem=document.createElement("div");
+stem.classList.add("stem");
+
+let flower=document.createElement("div");
+flower.classList.add("flower");
+
+let r=Math.random();
+
+if(r<0.6)
+flower.classList.add("pink");
+else if(r<0.85)
+flower.classList.add("red");
+else
+flower.classList.add("yellow");
+
+t.appendChild(stem);
+t.appendChild(flower);
+
+t.style.left=x+"%";
+
+field.appendChild(t);
+
+}
+
+for(let i=0;i<120;i++){
+createTulip(Math.random()*100);
+}
+
+/* PÉTALOS */
+
+setInterval(()=>{
+
+let p=document.createElement("div");
+
+p.classList.add("petal");
+
+p.style.left=Math.random()*100+"%";
+
+p.style.animationDuration=
+5+Math.random()*5+"s";
+
+document.body.appendChild(p);
+
+setTimeout(()=>p.remove(),10000);
+
+},400);
+
+/* FRASES */
+
+const scenes=[
+
+"Querida Katty Machela",
+
+"Sé que no puedo llevarte flores a la casa",
+
+"Por lo mismo he estado pensando la forma de poder hacer eso sin que sea un problema para ti en estos momentos",
+
+"No me iba a quedar con los brazos cruzados",
+
+"Dado eso, te hago esta carta, espero te guste",
+
+"Porque aunque no pueda llevar flores reales...",
+
+"Siempre voy a buscar la forma de hacerte sentir especial",
+
+"Cada tulipán que ves aquí...",
+
+"Representa una sonrisa que deseo regalarte",
+
+"Y cada pétalo que cae...",
+
+"Es un pequeño pensamiento bonito que tengo para ti 🌷",
+
+"Espero que esta pequeña historia digital...",
+
+"Logre iluminar tu día aunque sea un poquito 💜"
+
+];
+
+let currentScene=0;
+let typing=false;
+
+function typeText(text){
+
+typing=true;
+
+letter.innerHTML="";
+
+let i=0;
+
+let interval=setInterval(()=>{
+
+letter.innerHTML+=text.charAt(i);
+
+i++;
+
+if(i>=text.length){
+
+clearInterval(interval);
+
+typing=false;
+
+}
+
+},40);
+
+}
+
+/* ABRIR SOBRE */
+
+envelope.addEventListener("click",()=>{
+
+let seal=document.querySelector(".seal");
+
+seal.style.transform="scale(0)";
+seal.style.opacity="0";
+
+setTimeout(()=>{
+
+envelope.remove();
+
+letter.style.opacity="1";
+
+btn.style.opacity="1";
+
+music.volume=0.4;
+music.play().catch(()=>{});
+
+typeText(scenes[currentScene]);
+
+},600);
+
+});
+
+/* BOTÓN */
+
+btn.addEventListener("click",()=>{
+
+if(typing) return;
+
+currentScene++;
+
+if(currentScene<scenes.length){
+
+typeText(scenes[currentScene]);
+
+createTulip(Math.random()*100);
+
+}
+
+else{
+
+btn.style.display="none";
+
+finalText.style.opacity="1";
+
+setTimeout(()=>{
+secretBtn.style.opacity="1";
+},2000);
+
+}
+
+});
+
+/* SECRETO */
+
+secretBtn.addEventListener("click",()=>{
+secretMessage.style.opacity="1";
+});
+
+/* CAMBIO A NOCHE 🌙 */
+
+setTimeout(()=>{
+
+sky.classList.add("night");
+
+sun.style.opacity="0";
+
+moon.style.opacity="1";
+
+},45000);
+
+});
+</script>
+
+</body>
+</html>
